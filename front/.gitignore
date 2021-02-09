@@ -23,4 +23,4 @@ pnpm-debug.log*
 *.sw?
 node_modules
 
-deploy.sh
+credentials.sh
