@@ -12,7 +12,6 @@ Vue.filter('currency', value => {
     .replace(/.([^.]*)$/, ',$1')
 })
 
-
 /** Formats to date
  *  Example: Formats yyyy-mm-dd into dd/mm/yyyy (or any output format of choice)
  */
@@ -27,10 +26,11 @@ Vue.filter('date', (value, format = 'YYYY-MM-DD') => {
     .format(format)
 })
 
-
 /** Formats to percent
  *  Example: Formats 0.4542 into 45,42%
  */
-Vue.filter('percent', (value, precision = 1) =>
-  (value * 100).toFixed(precision).replace('.', ',') + '%'
+Vue.filter(
+  'percent',
+  (value, precision = 1) =>
+    (value * 100).toFixed(precision).replace('.', ',') + '%'
 )

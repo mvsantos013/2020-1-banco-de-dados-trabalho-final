@@ -23,7 +23,7 @@
         logo="BD 2020.1"
         subLogo="Trabalho Final"
         :avatar="null"
-        :username="null"
+        :username="'username@test.com'"
         :role="null"
         :navigationDrawer="navigationDrawer"
         footerText="BD 2020.1 Trabalho Final"
@@ -46,7 +46,7 @@ export default {
   async mounted() {
     try {
       this.isAppLoading = true
-      await new Promise(setTimeout(() => {}, 2000)) // sleep 2 seconds
+      await new Promise(resolve => setTimeout(resolve, 2000)) // sleep 2 seconds
       this.logged = true
       this.isAppLoading = false
     } catch (e) {
@@ -72,6 +72,6 @@ export default {
         }
       ]
     }
-  },
+  }
 }
 </script>
