@@ -30,7 +30,9 @@
       />
 
       <v-main>
-        <router-view></router-view>
+        <v-container>
+          <router-view></router-view>
+        </v-container>
       </v-main>
     </v-app>
   </transition>
@@ -57,20 +59,7 @@ export default {
     return {
       isAppLoading: false,
       logged: false,
-      navigationDrawer: [
-        {
-          category: null,
-          permission: true,
-          navLinks: [
-            {
-              text: 'Home',
-              icon: 'mdi-view-dashboard',
-              url: '/',
-              permission: true
-            }
-          ]
-        }
-      ]
+      navigationDrawer: [],
     }
   }
 }
