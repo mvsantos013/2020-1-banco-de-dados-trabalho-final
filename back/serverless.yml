@@ -1,0 +1,31 @@
+service: bd-2020-1-trabalho-final
+
+
+# Cloud provider settings
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-1
+  environment:
+    DB_KEY: ${file(credentials.yml):DB_KEY}
+    DB_SECRET: ${file(credentials.yml):DB_SECRET}
+
+
+# Define functions here
+functions:
+  pacientes:
+    handler: src/functions/pacientes.handler
+    events:
+      - http:
+          method: get
+          path: api/pacientes
+          cors: true
+
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
