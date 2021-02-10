@@ -22,15 +22,6 @@
           <v-img :src="avatar"></v-img>
         </v-avatar>
       </div>
-
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on" @click="$emit('on-logout')">
-            <v-icon>mdi-logout</v-icon>
-          </v-btn>
-        </template>
-        <span>Sair</span>
-      </v-tooltip>
     </v-app-bar>
 
     <v-navigation-drawer

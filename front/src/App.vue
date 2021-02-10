@@ -23,7 +23,7 @@
         logo="BD 2020.1"
         subLogo="Trabalho Final"
         :avatar="null"
-        :username="'username@test.com'"
+        :username="'username'"
         :role="null"
         :navigationDrawer="navigationDrawer"
         footerText="BD 2020.1 Trabalho Final"
