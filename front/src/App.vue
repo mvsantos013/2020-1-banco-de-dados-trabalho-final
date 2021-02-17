@@ -59,7 +59,38 @@ export default {
     return {
       isAppLoading: false,
       logged: false,
-      navigationDrawer: [],
+      navigationDrawer: [
+        {
+					category: null,
+					permission: true,
+					navLinks: [
+						{
+              text: 'Página inicial',
+              icon: 'mdi-view-dashboard',
+							url: '/',
+							permission: true
+            }
+          ]
+        },
+        {
+					category: 'Base de dados',
+					permission: true,
+					navLinks: [
+						{
+							text: 'Pacientes',
+							icon: 'mdi-account-group',
+							url: '/pacientes',
+							permission: true
+						},
+						{
+							text: 'Sexos',
+							icon: 'mdi-human-male',
+							url: '/sexos',
+							permission: true
+						}
+					]
+				},
+      ],
     }
   }
 }

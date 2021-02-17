@@ -1,10 +1,10 @@
 <template>
   <nav>
     <v-app-bar class="primary" dark app fixed>
-      <!-- <v-app-bar-nav-icon
+      <v-app-bar-nav-icon
         v-if="navigationDrawer.length"
         @click.stop="drawer = !drawer"
-      ></v-app-bar-nav-icon>-->
+      ></v-app-bar-nav-icon>
 
       <v-toolbar-title>
         <router-link to="/" tag="span" style="display: flex;">
@@ -16,24 +16,23 @@
 
       <v-spacer></v-spacer>
 
-      <div class="navbar-avatar mr-3">
+      <!-- <div class="navbar-avatar mr-3">
         <span class="pr-3">{{ username }}</span>
         <v-avatar v-if="avatar" size="36">
           <v-img :src="avatar"></v-img>
         </v-avatar>
-      </div>
+      </div> -->
     </v-app-bar>
 
     <v-navigation-drawer
       v-if="navigationDrawer.length"
       v-model="drawer"
       app
-      temporary
       class="primary"
       dark
       style="border: 0px"
     >
-      <v-list-item>
+      <!-- <v-list-item>
         <v-list-item-avatar v-if="avatar">
           <v-img :src="avatar"></v-img>
         </v-list-item-avatar>
@@ -48,7 +47,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider></v-divider> -->
 
       <template v-for="area in navigationDrawer">
         <div v-if="area.permission" :key="area.category">
@@ -132,7 +131,7 @@ export default {
   },
   data() {
     return {
-      drawer: false
+      drawer: true
     }
   }
 }
