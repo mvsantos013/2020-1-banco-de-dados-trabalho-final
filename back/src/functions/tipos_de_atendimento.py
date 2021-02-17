@@ -6,7 +6,7 @@ def handler(event, context):
   global data
   
   if(data is None or 'IS_LOCAL' in event):
-    data = db.query(f'''SELECT * FROM `pacientes`;''')
+    data = db.query(f'''SELECT * FROM `tipos_de_atendimento`;''')
 
   return {
     'statusCode': 200,

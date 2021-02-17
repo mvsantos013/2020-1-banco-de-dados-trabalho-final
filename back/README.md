@@ -2,11 +2,17 @@
 
 Esta é uma aplicação feita com a Serverless Framework.
 
-# How to invoke an API endpoint locally
+## Local setup
+```bash
+npm install -g serverless
+npm install
+pipenv install
+```
+
+## How to invoke an API endpoint locally
 
 ```bash
-# make sure you have serverless installed
-npm install -g serverless
+pipenv shell
 
 serverless invoke local -f pacientes # pacientes endpoint
 serverless invoke local -f desfechos # desfechos endpoint

@@ -8,12 +8,64 @@ provider:
   stage: dev
   region: us-east-1
   environment:
-    DB_KEY: ${file(credentials.yml):DB_KEY}
-    DB_SECRET: ${file(credentials.yml):DB_SECRET}
+    DB_HOST: ${file(credentials.yml):DB_HOST}
+    DB_NAME: ${file(credentials.yml):DB_NAME} 
+    DB_USER: ${file(credentials.yml):DB_USER} 
+    DB_PASSWORD: ${file(credentials.yml):DB_PASSWORD} 
+
 
 
 # Define functions here
 functions:
+  atendimentos:
+    handler: src/functions/atendimentos.handler
+    events:
+      - http:
+          method: get
+          path: api/atendimentos
+          cors: true
+  clinicas:
+    handler: src/functions/clinicas.handler
+    events:
+      - http:
+          method: get
+          path: api/clinicas
+          cors: true
+  desfechos:
+    handler: src/functions/desfechos.handler
+    events:
+      - http:
+          method: get
+          path: api/desfechos
+          cors: true
+  enderecos:
+    handler: src/functions/enderecos.handler
+    events:
+      - http:
+          method: get
+          path: api/enderecos
+          cors: true
+  estados:
+    handler: src/functions/estados.handler
+    events:
+      - http:
+          method: get
+          path: api/estados
+          cors: true
+  locais_de_exame:
+    handler: src/functions/locais_de_exame.handler
+    events:
+      - http:
+          method: get
+          path: api/locais_de_exame
+          cors: true
+  municipios:
+    handler: src/functions/municipios.handler
+    events:
+      - http:
+          method: get
+          path: api/municipios
+          cors: true
   pacientes:
     handler: src/functions/pacientes.handler
     events:
@@ -21,7 +73,41 @@ functions:
           method: get
           path: api/pacientes
           cors: true
-
+  paises:
+    handler: src/functions/paises.handler
+    events:
+      - http:
+          method: get
+          path: api/paises
+          cors: true
+  sexos:
+    handler: src/functions/sexos.handler
+    events:
+      - http:
+          method: get
+          path: api/sexos
+          cors: true
+  tipos_de_atendimento:
+    handler: src/functions/tipos_de_atendimento.handler
+    events:
+      - http:
+          method: get
+          path: api/tipos_de_atendimento
+          cors: true
+  tipos_de_desfecho:
+    handler: src/functions/tipos_de_desfecho.handler
+    events:
+      - http:
+          method: get
+          path: api/tipos_de_desfecho
+          cors: true
+  tipos_de_exame:
+    handler: src/functions/tipos_de_exame.handler
+    events:
+      - http:
+          method: get
+          path: api/tipos_de_exame
+          cors: true
 
 plugins:
   - serverless-python-requirements
