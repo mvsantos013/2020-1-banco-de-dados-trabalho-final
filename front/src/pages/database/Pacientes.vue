@@ -13,17 +13,17 @@
 <script>
 import axios from 'axios'
 
-const API_PATH = 'https://ohup21d337.execute-api.us-east-1.amazonaws.com/dev/api'
+const API_PATH = process.env.VUE_APP_API_BASE_PATH
 
 export default {
   data(){
     return {
       pacientes: [],
       headers: [
-        { text: 'ID Paciente', value: 'id'},
-        { text: 'ID Sexo', value: 'id_sexo'},
-        { text: 'Ano Nascimento', value: 'aa_nascimento'},
-        { text: 'ID Endereço', value: 'id_endereco'},
+        { text: 'id', value: 'id'},
+        { text: 'id_sexo', value: 'id_sexo'},
+        { text: 'aa_nascimento', value: 'aa_nascimento'},
+        { text: 'id_endereco', value: 'id_endereco'},
       ]
     }
   },

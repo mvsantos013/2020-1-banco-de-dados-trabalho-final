@@ -52,12 +52,19 @@ functions:
           method: get
           path: api/estados
           cors: true
+  exames:
+    handler: src/functions/exames.handler
+    events:
+      - http:
+          method: get
+          path: api/exames
+          cors: true
   locais_de_exame:
     handler: src/functions/locais_de_exame.handler
     events:
       - http:
           method: get
-          path: api/locais_de_exame
+          path: api/locais-de-exame
           cors: true
   municipios:
     handler: src/functions/municipios.handler
@@ -92,21 +99,35 @@ functions:
     events:
       - http:
           method: get
-          path: api/tipos_de_atendimento
+          path: api/tipos-de-atendimento
           cors: true
   tipos_de_desfecho:
     handler: src/functions/tipos_de_desfecho.handler
     events:
       - http:
           method: get
-          path: api/tipos_de_desfecho
+          path: api/tipos-de-desfecho
           cors: true
   tipos_de_exame:
     handler: src/functions/tipos_de_exame.handler
     events:
       - http:
           method: get
-          path: api/tipos_de_exame
+          path: api/tipos-de-exame
+          cors: true
+  unidades:
+    handler: src/functions/unidades.handler
+    events:
+      - http:
+          method: get
+          path: api/unidades
+          cors: true
+  analitos:
+    handler: src/functions/analitos.handler
+    events:
+      - http:
+          method: get
+          path: api/analitos
           cors: true
 
 plugins:

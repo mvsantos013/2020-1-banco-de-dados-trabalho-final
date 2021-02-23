@@ -13,15 +13,15 @@
 <script>
 import axios from 'axios'
 
-const API_PATH = 'https://ohup21d337.execute-api.us-east-1.amazonaws.com/dev/api'
+const API_PATH = process.env.VUE_APP_API_BASE_PATH
 
 export default {
   data(){
     return {
       sexos: [],
       headers: [
-        { text: 'ID', value: 'id'},
-        { text: 'Sexo', value: 'sexo'},
+        { text: 'id', value: 'id'},
+        { text: 'sexo', value: 'sexo'},
       ]
     }
   },
