@@ -65,15 +65,15 @@ export default {
 					permission: true,
 					navLinks: [
 						{ text: 'Página inicial', icon: 'mdi-view-dashboard', url: '/', permission: true },
-						{ text: 'Relatório', icon: 'mdi-note-text-outline', url: '/', permission: true }
+						{ text: 'Relatório', icon: 'mdi-note-text-outline', url: '/relatorio', permission: true }
           ]
         },
         {
 					category: 'Queries',
 					permission: true,
 					navLinks: [
-						{ text: 'Pacientes que morreram', icon: 'mdi-skull-outline', url: '/', permission: true },
-						{ text: 'Casos por estado', icon: 'mdi-numeric-9-plus-box-multiple-outline', url: '/', permission: true }
+						{ text: 'Óbitos', icon: 'mdi-skull-outline', url: '/obitos', permission: true },
+						{ text: 'Casos por estado', icon: 'mdi-numeric-9-plus-box-multiple-outline', url: '/casos', permission: true }
           ]
         },
         {
