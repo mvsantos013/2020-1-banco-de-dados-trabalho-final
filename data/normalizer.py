@@ -119,6 +119,18 @@ def normaliza_exames():
   tipos_de_exame_df = pd.DataFrame(tipos_de_exame, columns=["NOME"])
   tipos_de_exame_df.index.name = "ID_TIPO_EXAME"
 
+  unidades = exames['CD_UNIDADE']
+  unidades = list(set(unidades))
+  unidades = [x for x in unidades if x == x]
+  unidades_df = pd.DataFrame(unidades, columns=["NOME"])
+  unidades_df.index.name = "ID_UNIDADE"
+
+  analitos = exames['DE_ANALITO']
+  analitos = list(set(analitos))
+  analitos = [x for x in analitos if x == x]
+  analitos_df = pd.DataFrame(analitos, columns=["NOME"])
+  analitos_df.index.name = "ID_ANALITO"
+
   def relaciona(row):
     id_exame = locais_de_exame_df.index[locais_de_exame_df['NOME'] == row['DE_ORIGEM']].tolist()
     row['DE_ORIGEM'] = str(id_exame[0]) if len(id_exame) > 0 else None
@@ -126,15 +138,24 @@ def normaliza_exames():
     id_tipo_de_exame = tipos_de_exame_df.index[tipos_de_exame_df['NOME'] == row['DE_EXAME']].tolist()
     row['DE_EXAME'] = str(id_tipo_de_exame[0]) if len(id_tipo_de_exame) > 0 else None
 
+    id_unidade = unidades_df.index[unidades_df['NOME'] == row['CD_UNIDADE']].tolist()
+    row['CD_UNIDADE'] = str(id_unidade[0]) if len(id_unidade) > 0 else None
+
+    id_analito = analitos_df.index[analitos_df['NOME'] == row['DE_ANALITO']].tolist()
+    row['DE_ANALITO'] = str(id_analito[0]) if len(id_analito) > 0 else None
+
     return row
 
   exames = exames.apply(relaciona, axis=1)
-  exames.rename(columns = {'DE_ORIGEM': 'ID_LOCAL_EXAME', 'DE_EXAME': 'ID_TIPO_EXAME'}, inplace = True) 
+  exames.rename(columns = {'DE_ORIGEM': 'ID_LOCAL_EXAME', 'DE_EXAME': 'ID_TIPO_EXAME', 'CD_UNIDADE': 'ID_UNIDADE', 'DE_ANALITO': 'ID_ANALITO'}, inplace = True) 
+  exames.index.name = "ID_EXAME"
 
-  exames.to_csv('./data/exames.csv', index=False)
   locais_de_exame_df.to_csv('./data/locais_de_exame.csv')
   tipos_de_exame_df.to_csv('./data/tipos_de_exame.csv')
+  unidades_df.to_csv('./data/unidades.csv')
+  analitos_df.to_csv('./data/analitos.csv')
+  exames.to_csv('./data/exames.csv')
 
-#normaliza_pacientes()
-#normaliza_desfechos()
-#normaliza_exames()
+normaliza_pacientes()
+normaliza_desfechos()
+normaliza_exames()
