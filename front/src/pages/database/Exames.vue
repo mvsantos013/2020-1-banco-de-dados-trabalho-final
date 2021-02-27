@@ -21,7 +21,6 @@ export default {
       exames: [],
       headers: [
         { text: 'id_exame', value: 'id_exame'},
-        { text: 'id_paciente', value: 'id_paciente'},
         { text: 'id_atendimento', value: 'id_atendimento'},
         { text: 'dt_coleta', value: 'dt_coleta'},
         { text: 'id_local_exame', value: 'id_local_exame'},
@@ -44,7 +43,7 @@ export default {
         const cache = localStorage.getItem('exames')
 
         // Get data from cache. Avoids overloading API.
-        if(cache){
+        if(false){
           this.exames = JSON.parse(cache)
           return;
         }

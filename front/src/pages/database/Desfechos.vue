@@ -20,7 +20,6 @@ export default {
     return {
       desfechos: [],
       headers: [
-        { text: 'id_paciente', value: 'id_paciente'},
         { text: 'id_atendimento', value: 'id_atendimento'},
         { text: 'id_clinica', value: 'id_clinica'},
         { text: 'dt_desfecho', value: 'dt_desfecho'},
@@ -39,7 +38,7 @@ export default {
         const cache = localStorage.getItem('desfechos')
 
         // Get data from cache. Avoids overloading API.
-        if(cache){
+        if(false){
           this.desfechos = JSON.parse(cache)
           return;
         }

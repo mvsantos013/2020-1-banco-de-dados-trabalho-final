@@ -23,6 +23,7 @@ export default {
         { text: 'id', value: 'id'},
         { text: 'dt_atendimento', value: 'dt_atendimento'},
         { text: 'id_tipo_atendimento', value: 'id_tipo_atendimento'},
+        { text: 'id_paciente', value: 'id_paciente'},
       ]
     }
   },
@@ -37,7 +38,7 @@ export default {
         const cache = localStorage.getItem('atendimentos')
 
         // Get data from cache. Avoids overloading API.
-        if(cache){
+        if(false){
           this.atendimentos = JSON.parse(cache)
           return;
         }

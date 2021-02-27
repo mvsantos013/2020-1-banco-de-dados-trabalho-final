@@ -18,7 +18,7 @@ Serviço: Hospedar o banco de dados e oferecer uma API para o frontend.
 
 Linguagem: Javascript e Serverless Framework
 
-Infraestrutura: AWS (API Gateway + Lambda functions + Athena + S3 )
+Infraestrutura: AWS (API Gateway + Lambda functions + MySQL )
 
 
 ## Frontend
