@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('unidades', JSON.stringify(this.unidades))
       } 
       catch(e){
-        console.log('Error ao carregar unidades.')
+        alert('Error ao carregar unidades.')
       }
     }
   }

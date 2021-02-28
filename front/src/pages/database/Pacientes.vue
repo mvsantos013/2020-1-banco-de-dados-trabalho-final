@@ -51,7 +51,7 @@ export default {
         localStorage.setItem('pacientes', JSON.stringify(this.pacientes))
       } 
       catch(e){
-        console.log('Error ao carregar pacientes.')
+        alert('Error ao carregar pacientes.')
       }
     }
   }

@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('tiposDeAtendimento', JSON.stringify(this.tiposDeAtendimento))
       } 
       catch(e){
-        console.log('Error ao carregar tiposDeAtendimento.')
+        alert('Error ao carregar tiposDeAtendimento.')
       }
     }
   }

@@ -18,116 +18,130 @@ provider:
 # Define functions here
 functions:
   atendimentos:
-    handler: src/functions/atendimentos.handler
+    handler: src/functions/database/atendimentos.handler
     events:
       - http:
           method: get
           path: api/atendimentos
           cors: true
   clinicas:
-    handler: src/functions/clinicas.handler
+    handler: src/functions/database/clinicas.handler
     events:
       - http:
           method: get
           path: api/clinicas
           cors: true
   desfechos:
-    handler: src/functions/desfechos.handler
+    handler: src/functions/database/desfechos.handler
     events:
       - http:
           method: get
           path: api/desfechos
           cors: true
   enderecos:
-    handler: src/functions/enderecos.handler
+    handler: src/functions/database/enderecos.handler
     events:
       - http:
           method: get
           path: api/enderecos
           cors: true
   estados:
-    handler: src/functions/estados.handler
+    handler: src/functions/database/estados.handler
     events:
       - http:
           method: get
           path: api/estados
           cors: true
   exames:
-    handler: src/functions/exames.handler
+    handler: src/functions/database/exames.handler
     events:
       - http:
           method: get
           path: api/exames
           cors: true
   locais_de_exame:
-    handler: src/functions/locais_de_exame.handler
+    handler: src/functions/database/locais_de_exame.handler
     events:
       - http:
           method: get
           path: api/locais-de-exame
           cors: true
   municipios:
-    handler: src/functions/municipios.handler
+    handler: src/functions/database/municipios.handler
     events:
       - http:
           method: get
           path: api/municipios
           cors: true
   pacientes:
-    handler: src/functions/pacientes.handler
+    handler: src/functions/database/pacientes.handler
     events:
       - http:
           method: get
           path: api/pacientes
           cors: true
   paises:
-    handler: src/functions/paises.handler
+    handler: src/functions/database/paises.handler
     events:
       - http:
           method: get
           path: api/paises
           cors: true
   sexos:
-    handler: src/functions/sexos.handler
+    handler: src/functions/database/sexos.handler
     events:
       - http:
           method: get
           path: api/sexos
           cors: true
   tipos_de_atendimento:
-    handler: src/functions/tipos_de_atendimento.handler
+    handler: src/functions/database/tipos_de_atendimento.handler
     events:
       - http:
           method: get
           path: api/tipos-de-atendimento
           cors: true
   tipos_de_desfecho:
-    handler: src/functions/tipos_de_desfecho.handler
+    handler: src/functions/database/tipos_de_desfecho.handler
     events:
       - http:
           method: get
           path: api/tipos-de-desfecho
           cors: true
   tipos_de_exame:
-    handler: src/functions/tipos_de_exame.handler
+    handler: src/functions/database/tipos_de_exame.handler
     events:
       - http:
           method: get
           path: api/tipos-de-exame
           cors: true
   unidades:
-    handler: src/functions/unidades.handler
+    handler: src/functions/database/unidades.handler
     events:
       - http:
           method: get
           path: api/unidades
           cors: true
   analitos:
-    handler: src/functions/analitos.handler
+    handler: src/functions/database/analitos.handler
     events:
       - http:
           method: get
           path: api/analitos
+          cors: true
+  desfechos-resumo:
+    handler: src/functions/desfechos_resumo.handler
+    events:
+      - http:
+          method: get
+          path: api/desfechos-resumo
+          cors: true
+  altas-administrativas:
+    handler: src/functions/altas_administrativas.handler
+    events:
+      - http:
+          method: get
+          path: api/altas-administrativas
           cors: true
 
 plugins:

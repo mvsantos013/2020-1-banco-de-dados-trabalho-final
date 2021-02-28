@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', name: 'Home', component: () => import('../pages/Home.vue') },
+  { path: '/relatorio', name: 'Relatorio', component: () => import('../pages/Relatorio.vue') },
   { path: '/db/analitos', name: 'Analitos', component: () => import('../pages/database/Analitos.vue') },
   { path: '/db/atendimentos', name: 'Atendimentos', component: () => import('../pages/database/Atendimentos.vue') },
   { path: '/db/clinicas', name: 'Clinicas', component: () => import('../pages/database/Clinicas.vue') },
@@ -19,7 +20,9 @@ const routes = [
   { path: '/db/sexos', name: 'Sexos', component: () => import('../pages/database/Sexos.vue') },
   { path: '/db/tipos-de-atendimento', name: 'TiposDeAtendimento', component: () => import('../pages/database/TiposDeAtendimento.vue') },
   { path: '/db/tipos-de-desfecho', name: 'TiposDeDesfecho', component: () => import('../pages/database/TiposDeDesfecho.vue') },
-  { path: '/db/tipos-de-exame', name: 'TiposDeExame', component: () => import('../pages/database/TiposDeExame.vue') }
+  { path: '/db/tipos-de-exame', name: 'TiposDeExame', component: () => import('../pages/database/TiposDeExame.vue') },
+  { path: '/desfechos-resumo', name: 'ResumoDosDesfechos', component: () => import('../pages/ResumoDosDesfechos.vue') },
+  { path: '/altas-administrativas', name: 'AltasAdministrativas', component: () => import('../pages/AltasAdministrativas.vue') }
 ]
 
 const router = new VueRouter({

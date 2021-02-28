@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('municipios', JSON.stringify(this.municipios))
       } 
       catch(e){
-        console.log('Error ao carregar municipios.')
+        alert('Error ao carregar municipios.')
       }
     }
   }

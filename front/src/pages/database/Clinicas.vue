@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('analitos', JSON.stringify(this.analitos))
       } 
       catch(e){
-        console.log('Error ao carregar analitos.')
+        alert('Error ao carregar analitos.')
       }
     }
   }

@@ -36,7 +36,7 @@ export default {
         const cache = localStorage.getItem('analitos')
 
         // Get data from cache. Avoids overloading API.
-        if(cache){
+        if(false){
           this.analitos = JSON.parse(cache)
           return;
         }
@@ -49,7 +49,8 @@ export default {
         localStorage.setItem('analitos', JSON.stringify(this.analitos))
       } 
       catch(e){
-        console.log('Error ao carregar analitos.')
+        console.log(e)
+        alert('Error ao carregar analitos.')
       }
     }
   }

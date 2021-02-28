@@ -40,7 +40,7 @@ export default {
   methods:{
     async fetchExames(){
       try{
-        const cache = localStorage.getItem('exames')
+        //const cache = localStorage.getItem('exames')
 
         // Get data from cache. Avoids overloading API.
         if(false){
@@ -53,10 +53,10 @@ export default {
         this.exames = response.data
 
         // Caches data
-        localStorage.setItem('exames', JSON.stringify(this.exames))
+        //localStorage.setItem('exames', JSON.stringify(this.exames))
       } 
       catch(e){
-        console.log('Error ao carregar exames.')
+        alert('Error ao carregar exames.')
       }
     }
   }

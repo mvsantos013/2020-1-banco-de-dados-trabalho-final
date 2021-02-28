@@ -16,7 +16,7 @@ A aplicação usa arquitetura client-server, os respectivos códigos se encontra
 
 Serviço: Hospedar o banco de dados e oferecer uma API para o frontend.
 
-Linguagem: Javascript e Serverless Framework
+Linguagem: Python e Serverless Framework
 
 Infraestrutura: AWS (API Gateway + Lambda functions + MySQL )
 

@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('tiposDeDesfecho', JSON.stringify(this.tiposDeDesfecho))
       } 
       catch(e){
-        console.log('Error ao carregar tiposDeDesfecho.')
+        alert('Error ao carregar tiposDeDesfecho.')
       }
     }
   }

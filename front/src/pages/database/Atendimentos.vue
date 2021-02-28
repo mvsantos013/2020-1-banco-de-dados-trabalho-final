@@ -35,7 +35,7 @@ export default {
   methods:{
     async fetchAtendimentos(){
       try{
-        const cache = localStorage.getItem('atendimentos')
+        //const cache = localStorage.getItem('atendimentos')
 
         // Get data from cache. Avoids overloading API.
         if(false){
@@ -48,10 +48,11 @@ export default {
         this.atendimentos = response.data
 
         // Caches data
-        localStorage.setItem('atendimentos', JSON.stringify(this.atendimentos))
+        //localStorage.setItem('atendimentos', JSON.stringify(this.atendimentos))
       } 
       catch(e){
-        console.log('Error ao carregar atendimentos.')
+        console.log(e)
+        alert('Error ao carregar atendimentos.')
       }
     }
   }

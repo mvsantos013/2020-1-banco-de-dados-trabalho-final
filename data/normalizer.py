@@ -1,6 +1,10 @@
 import pandas as pd
 
-def normaliza_pacientes():
+# File used to normalize raw data.
+
+def normaliza():
+  desfechos = pd.read_csv('./HSL_Desfechos_2.csv', delimiter="|")
+  exames = pd.read_csv('./HSL_Exames_2.csv', delimiter="|")
   pacientes = pd.read_csv('./HSL_Pacientes_2.csv', delimiter="|")
 
   paises = pacientes['CD_PAIS']
@@ -51,16 +55,6 @@ def normaliza_pacientes():
   pacientes = pacientes[['ID_PACIENTE', 'ID_SEXO', 'AA_NASCIMENTO']]
   pacientes['ID_ENDERECO'] = enderecos.index.tolist()
 
-  pacientes.to_csv('./data/pacientes.csv', index=False)
-  paises_df.to_csv('./data/paises.csv')
-  estados_df.to_csv('./data/estados.csv')
-  municipios_df.to_csv('./data/municipios.csv')
-  enderecos.to_csv('./data/enderecos.csv')
-  sexos_df.to_csv('./data/sexos.csv')
-
-
-def normaliza_desfechos():
-  desfechos = pd.read_csv('./HSL_Desfechos_2.csv', delimiter="|")
 
   atendimentos = desfechos.copy()[['id_atendimento', 'dt_atendimento', 'de_tipo_atendimento']]
 
@@ -81,7 +75,7 @@ def normaliza_desfechos():
   clinicas = desfechos.copy()[['id_clinica', 'de_clinica']]
   clinicas = clinicas.drop_duplicates(subset=['id_clinica'])
 
-  desfechos = desfechos[['id_paciente', 'id_atendimento', 'id_clinica', 'dt_desfecho', 'de_desfecho']]
+  desfechos = desfechos[['id_atendimento', 'id_clinica', 'dt_desfecho', 'de_desfecho']]
 
   tipos_de_desfecho = desfechos['de_desfecho']
   tipos_de_desfecho = list(set(tipos_de_desfecho))
@@ -97,15 +91,7 @@ def normaliza_desfechos():
   desfechos = desfechos.apply(relaciona, axis=1)
   desfechos.rename(columns = {'de_desfecho': 'id_tipo_desfecho'}, inplace = True) 
 
-  desfechos.to_csv('./data/desfechos.csv', index=False)
-  atendimentos.to_csv('./data/atendimentos.csv', index=False)
-  clinicas.to_csv('./data/clinicas.csv', index=False)
-  tipos_de_atendimento_df.to_csv('./data/tipos_de_atendimento.csv')
-  tipos_de_desfecho_df.to_csv('./data/tipos_de_desfecho.csv')
 
-
-def normaliza_exames():
-  exames = pd.read_csv('./HSL_Exames_2.csv', delimiter="|")
 
   locais_de_exame = exames['DE_ORIGEM']
   locais_de_exame = list(set(locais_de_exame))
@@ -150,12 +136,28 @@ def normaliza_exames():
   exames.rename(columns = {'DE_ORIGEM': 'ID_LOCAL_EXAME', 'DE_EXAME': 'ID_TIPO_EXAME', 'CD_UNIDADE': 'ID_UNIDADE', 'DE_ANALITO': 'ID_ANALITO'}, inplace = True) 
   exames.index.name = "ID_EXAME"
 
+  atendimento_paciente = exames[['ID_PACIENTE', 'ID_ATENDIMENTO']].drop_duplicates(['ID_ATENDIMENTO'])
+  atendimentos = atendimentos.set_index('id_atendimento').join(atendimento_paciente.set_index('ID_ATENDIMENTO'))
+
+  exames = exames.drop(columns=['ID_PACIENTE'])
+
+  pacientes.to_csv('./data/pacientes.csv', index=False)
+  paises_df.to_csv('./data/paises.csv')
+  estados_df.to_csv('./data/estados.csv')
+  municipios_df.to_csv('./data/municipios.csv')
+  enderecos.to_csv('./data/enderecos.csv')
+  sexos_df.to_csv('./data/sexos.csv')
+
   locais_de_exame_df.to_csv('./data/locais_de_exame.csv')
   tipos_de_exame_df.to_csv('./data/tipos_de_exame.csv')
   unidades_df.to_csv('./data/unidades.csv')
   analitos_df.to_csv('./data/analitos.csv')
   exames.to_csv('./data/exames.csv')
 
-normaliza_pacientes()
-normaliza_desfechos()
-normaliza_exames()
+  desfechos.to_csv('./data/desfechos.csv', index=False)
+  atendimentos.to_csv('./data/atendimentos.csv')
+  clinicas.to_csv('./data/clinicas.csv', index=False)
+  tipos_de_atendimento_df.to_csv('./data/tipos_de_atendimento.csv')
+  tipos_de_desfecho_df.to_csv('./data/tipos_de_desfecho.csv')
+
+normaliza()

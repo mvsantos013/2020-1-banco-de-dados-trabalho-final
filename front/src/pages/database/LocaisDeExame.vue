@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('locaisDeExame', JSON.stringify(this.locaisDeExame))
       } 
       catch(e){
-        console.log('Error ao carregar locaisDeExame.')
+        alert('Error ao carregar locaisDeExame.')
       }
     }
   }

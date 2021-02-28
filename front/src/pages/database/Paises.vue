@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('paises', JSON.stringify(this.paises))
       } 
       catch(e){
-        console.log('Error ao carregar paises.')
+        alert('Error ao carregar paises.')
       }
     }
   }

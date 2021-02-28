@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('tiposDeExame', JSON.stringify(this.tiposDeExame))
       } 
       catch(e){
-        console.log('Error ao carregar tiposDeExame.')
+        alert('Error ao carregar tiposDeExame.')
       }
     }
   }

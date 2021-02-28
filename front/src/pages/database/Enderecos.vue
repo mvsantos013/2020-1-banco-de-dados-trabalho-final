@@ -52,7 +52,7 @@ export default {
         localStorage.setItem('enderecos', JSON.stringify(this.enderecos))
       } 
       catch(e){
-        console.log('Error ao carregar enderecos.')
+        alert('Error ao carregar enderecos.')
       }
     }
   }

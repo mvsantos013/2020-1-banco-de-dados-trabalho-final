@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('estados', JSON.stringify(this.estados))
       } 
       catch(e){
-        console.log('Error ao carregar estados.')
+        alert('Error ao carregar estados.')
       }
     }
   }

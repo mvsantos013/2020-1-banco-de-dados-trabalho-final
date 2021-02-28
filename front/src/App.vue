@@ -72,6 +72,8 @@ export default {
 					category: 'Queries',
 					permission: true,
 					navLinks: [
+						{ text: 'Resumo dos desfechos', icon: 'mdi-file-document-outline', url: '/desfechos-resumo', permission: true },
+						{ text: 'Altas Administrativas', icon: 'mdi-medical-bag', url: '/altas-administrativas', permission: true },
 						{ text: 'Óbitos', icon: 'mdi-skull-outline', url: '/obitos', permission: true },
 						{ text: 'Casos por estado', icon: 'mdi-numeric-9-plus-box-multiple-outline', url: '/casos', permission: true }
           ]

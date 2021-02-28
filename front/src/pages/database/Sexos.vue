@@ -49,7 +49,7 @@ export default {
         localStorage.setItem('sexos', JSON.stringify(this.sexos))
       } 
       catch(e){
-        console.log('Error ao carregar sexos.')
+        alert('Error ao carregar sexos.')
       }
     }
   }
