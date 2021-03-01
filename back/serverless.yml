@@ -143,6 +143,13 @@ functions:
           method: get
           path: api/altas-administrativas
           cors: true
+  atendimentos-por-estado:
+    handler: src/functions/atendimentos_por_estado.handler
+    events:
+      - http:
+          method: get
+          path: api/atendimentos-por-estado
+          cors: true
 
 plugins:
   - serverless-python-requirements
