@@ -150,6 +150,20 @@ functions:
           method: get
           path: api/atendimentos-por-estado
           cors: true
+  obitos-por-idade:
+    handler: src/functions/obitos_por_idade.handler
+    events:
+      - http:
+          method: get
+          path: api/obitos-por-idade
+          cors: true
+  obitos-por-dia:
+    handler: src/functions/obitos_por_dia.handler
+    events:
+      - http:
+          method: get
+          path: api/obitos-por-dia
+          cors: true
 
 plugins:
   - serverless-python-requirements

@@ -25,6 +25,8 @@ const routes = [
   { path: '/desfechos-resumo', name: 'ResumoDosDesfechos', component: () => import('../pages/ResumoDosDesfechos.vue') },
   { path: '/altas-administrativas', name: 'AltasAdministrativas', component: () => import('../pages/AltasAdministrativas.vue') },
   { path: '/atendimentos-por-estado', name: 'AtendimentosPorEstado', component: () => import('../pages/AtendimentosPorEstado.vue') },
+  { path: '/obitos-por-idade', name: 'ObitosPorIdade', component: () => import('../pages/ObitosPorIdade.vue') },
+  { path: '/obitos-por-dia', name: 'ObitosPorDia', component: () => import('../pages/ObitosPorDia.vue') },
 ]
 
 const router = new VueRouter({

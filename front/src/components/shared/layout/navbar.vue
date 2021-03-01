@@ -139,7 +139,7 @@ export default {
 
 <style lang="scss" scoped>
 .subheader {
-  margin-top: 1.1em;
+  margin-top: 0.5em;
   height: auto;
 }
 .navbar-avatar {

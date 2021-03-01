@@ -108,10 +108,10 @@ export default {
   methods:{
     async fetchDesfechos(){
       try{
-        const cache = localStorage.getItem('desfechos')
+        //const cache = localStorage.getItem('desfechos')
 
         // Get data from cache. Avoids overloading API.
-        if(cache){
+        if(false){
           this.desfechos = JSON.parse(cache)
           return;
         }
@@ -121,7 +121,7 @@ export default {
         this.desfechos = response.data
 
         // Caches data
-        localStorage.setItem('desfechos', JSON.stringify(this.desfechos))
+        //localStorage.setItem('desfechos', JSON.stringify(this.desfechos))
       } 
       catch(e){
         console.log('Error ao carregar desfechos.')

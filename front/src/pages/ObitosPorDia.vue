@@ -1,46 +1,28 @@
 <template>
   <div class="mt-5">
-    <h1 class="mb-3">Altas Administrativas</h1>
+    <h1 class="mb-3">Óbitos por dia</h1>
 
     <pre class="query">
-SELECT 
-  DES.dt_desfecho as Data, 
-  SOMA_ADM / COUNT(*) as Proporção_de_Alta_Administrativa
-FROM 
-  atendimentos AS ATD
-INNER JOIN 
-  desfechos AS DES on ATD.id = DES.id_atendimento
-INNER JOIN
-  tipos_de_desfecho AS TIP on TIP.id = DES.id_tipo_desfecho
-INNER JOIN
-  (SELECT 
-    COUNT(*) AS SOMA_ADM, DES.dt_desfecho
-  FROM 
-    desfechos AS DES
-  INNER JOIN
-    tipos_de_desfecho AS TIP ON TIP.id = DES.id_tipo_desfecho
-  WHERE 
-    TIP.desfecho like '%Administrativa%' 
-  GROUP BY 
-    DES.dt_desfecho) as T on T.dt_desfecho = DES.dt_desfecho
-GROUP BY
-  DES.dt_desfecho
+SELECT dt_desfecho, COUNT(DISTINCT id_atendimento) AS obitos FROM desfechos
+WHERE id_tipo_desfecho IN (SELECT id FROM tipos_de_desfecho WHERE desfecho LIKE '%Óbito%')
+GROUP BY dt_desfecho
+order by dt_desfecho ASC
     </pre>
 
     <v-data-table
       :headers="headers"
-      :items="altasAdministrativas"
+      :items="obitosPorDia"
       :items-per-page="15"
       class="elevation-1"
     >
       <!-- eslint-disable -->
-      <template v-slot:item.Data="{ item }">
-        <span>{{ new Date(item.Data).toLocaleString().slice(0,10) }}</span>
+      <template v-slot:item.dt_desfecho="{ item }">
+        <span>{{ new Date(item.dt_desfecho).toLocaleString().slice(0,10) }}</span>
       </template>
 
-      <template v-slot:item.Proporção_de_Alta_Administrativa="{ item }">
+      <!-- <template v-slot:item.Proporção_de_Alta_Administrativa="{ item }">
         <span>{{ (item['Proporção_de_Alta_Administrativa']*100).toFixed(2) }}</span>
-      </template>
+      </template> -->
       <!-- eslint-enable -->
     </v-data-table>
 
@@ -50,7 +32,7 @@ GROUP BY
         <div style="width: 100%">
           <LineChart
           v-if="Array.isArray(chartData)"
-          :legends="['Data', 'Proporção de Alta Administrativa']"
+          :legends="['Data', 'Número de óbitos']"
           :chartData="chartData"
           :chartOptions="chartOptions"
         />
@@ -74,17 +56,17 @@ export default {
   },
   data(){
     return {
-      altasAdministrativas: [],
+      obitosPorDia: [],
       headers: [
-        { text: 'Data', value: 'Data'},
-        { text: 'Proporção de Alta Administrativa (%)', value: 'Proporção_de_Alta_Administrativa'},
+        { text: 'Data', value: 'dt_desfecho'},
+        { text: 'Número de óbitos', value: 'obitos'},
       ],
     }
   },
   computed:{
     chartData(){
-      const data = this.altasAdministrativas.map(item => 
-        [new Date(item.Data).toLocaleString().slice(0,10), item['Proporção_de_Alta_Administrativa']]
+      const data = this.obitosPorDia.map(item => 
+        [new Date(item.dt_desfecho).toLocaleString().slice(0,10), item.obitos]
       )
       return JSON.parse(JSON.stringify(data))
     },
@@ -103,7 +85,7 @@ export default {
           titleTextStyle: { color: baseColor }
         },
         vAxis: {
-          title: 'Proporção',
+          title: 'Óbitos',
           //format: 'R$ #,###.##',
           gridlines: { color: '#edf2f5', count: 4 },
           textStyle: { color: baseColor, fontSize: 12 },
@@ -117,30 +99,30 @@ export default {
     }
   },
   mounted(){
-    if(this.altasAdministrativas.length == 0){
-      this.fetchAltasAdministrativas();
+    if(this.obitosPorDia.length == 0){
+      this.fetchObitosPorDia();
     }
   },
   methods:{
-    async fetchAltasAdministrativas(){
+    async fetchObitosPorDia(){
       try{
-        //const cache = localStorage.getItem('altasAdministrativas')
+        //const cache = localStorage.getItem('obitosPorDia')
 
         // Get data from cache. Avoids overloading API.
         if(false){
-          this.altasAdministrativas = JSON.parse(cache)
+          this.obitosPorDia = JSON.parse(cache)
           return;
         }
 
         // Fetch data
-        const response = await axios.get(`${API_PATH}/altas-administrativas/`)
-        this.altasAdministrativas = response.data
+        const response = await axios.get(`${API_PATH}/obitos-por-dia/`)
+        this.obitosPorDia = response.data
 
         // Caches data
-        //localStorage.setItem('altasAdministrativas', JSON.stringify(this.altasAdministrativas))
+        //localStorage.setItem('obitosPorDia', JSON.stringify(this.obitosPorDia))
       } 
       catch(e){
-        console.log('Error ao carregar altasAdministrativas.')
+        console.log('Error ao carregar obitosPorDia.')
       }
     }
   }
