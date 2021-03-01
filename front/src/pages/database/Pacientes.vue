@@ -35,10 +35,10 @@ export default {
   methods:{
     async fetchPacientes(){
       try{
-        const cache = localStorage.getItem('pacientes')
+        //const cache = localStorage.getItem('pacientes')
 
         // Get data from cache. Avoids overloading API.
-        if(cache){
+        if(false){
           this.pacientes = JSON.parse(cache)
           return;
         }
@@ -48,7 +48,7 @@ export default {
         this.pacientes = response.data
 
         // Caches data
-        localStorage.setItem('pacientes', JSON.stringify(this.pacientes))
+        //localStorage.setItem('pacientes', JSON.stringify(this.pacientes))
       } 
       catch(e){
         alert('Error ao carregar pacientes.')
