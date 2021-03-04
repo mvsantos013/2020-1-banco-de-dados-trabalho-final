@@ -65,7 +65,7 @@ export default {
 					permission: true,
 					navLinks: [
 						// { text: 'Página inicial', icon: 'mdi-view-dashboard', url: '/', permission: true },
-						{ text: 'Relatório', icon: 'mdi-note-text-outline', url: '/relatorio', permission: true },
+						// { text: 'Relatório', icon: 'mdi-note-text-outline', url: '/relatorio', permission: true },
 						{ text: 'Normalizador', icon: 'mdi-xml', url: '/normalizador', permission: true },
           ]
         },
